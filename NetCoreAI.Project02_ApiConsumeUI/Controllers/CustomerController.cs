@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NetCoreAI.Project02_ApiConsumeUI.Dtos;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace NetCoreAI.Project02_ApiConsumeUI.Controllers
 {
@@ -22,7 +23,7 @@ namespace NetCoreAI.Project02_ApiConsumeUI.Controllers
         public async Task<IActionResult> CustomerList()
         {
             var client = _httpClientFactory.CreateClient();
-            // GetAsyn ile bir adrese istekte bulunacağız.
+            // GetAsync ile bir adrese istekte bulunacağız.
             var responseMessage = await client.GetAsync("https://localhost:7258/api/Customers");
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -39,6 +40,35 @@ namespace NetCoreAI.Project02_ApiConsumeUI.Controllers
         [HttpGet]
         public IActionResult CreateCustomer()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCustomer(CreateCustomerDto createCustomerDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            // Serialize normal gelen veriyi json formatına dönüştürür.
+            var jsonData = JsonConvert.SerializeObject(createCustomerDto);
+            // Gönderilecek data, data için kullanılacak karakter dizini, gönderilecek datanın formatı
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            // PostAsync ile bir adrese veri göndereceğiz.
+            var responseMessage = await client.PostAsync("https://localhost:7258/api/Customers", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("CustomerList");
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> DeleteCustomer(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            // ?id= ile dışarıdan gelen id'yi Request URL'nin içine entegre etmiş olacağız.
+            var responseMessage = await client.DeleteAsync($"https://localhost:7258/api/Customers?id={id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("CustomerList");
+            }
             return View();
         }
     }
