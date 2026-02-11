@@ -16,9 +16,16 @@
         </tr>
         @foreach(var item in Model)
         {
-            
+            <tr>
+                <td>@item.customerId</td>
+                <td>@item.customerName @item.customerSurname</td>
+                <td>@item.customerBalance</td>
+                <td><a href="/Customer/DeleteCustomer/@item.customerId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Customer/UpdateCustomer/@item.customerId" class="btn btn-success">Güncele</a></td>
+            </tr>
         }
     </table>
+    <a href="/Customer/CreateCustomer" class="btn btn-primary">Yeni Müşteri Girişi</a>
 </div>
 
 <h1>CustomerList</h1>
