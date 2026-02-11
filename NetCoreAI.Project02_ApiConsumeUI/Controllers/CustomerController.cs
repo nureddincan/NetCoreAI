@@ -19,12 +19,12 @@ namespace NetCoreAI.Project02_ApiConsumeUI.Controllers
         // buradaki çekilecek olan isimler ve veri türleri birebir aynı olmak zorunda.
         // Bunu Dto(Data Transfer Object) ile çözebiliriz.
         // API Methodları asenkron olarak çalışır. Methodları asenkrona çevirmeliyiz.
-        public async Task<IActionResult> CustomerList() 
+        public async Task<IActionResult> CustomerList()
         {
             var client = _httpClientFactory.CreateClient();
             // GetAsyn ile bir adrese istekte bulunacağız.
             var responseMessage = await client.GetAsync("https://localhost:7258/api/Customers");
-            if(responseMessage.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
                 // responseMessage'ın içindeki değeri okuyup, jsonData'nın içine atılacak.
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -33,6 +33,12 @@ namespace NetCoreAI.Project02_ApiConsumeUI.Controllers
                 return View(values);
             }
 
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult CreateCustomer()
+        {
             return View();
         }
     }

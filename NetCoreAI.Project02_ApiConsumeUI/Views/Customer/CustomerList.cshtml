@@ -1,8 +1,10 @@
-﻿
-@model List<NetCoreAI.Project02_ApiConsumeUI.Dtos.ResultCustomerDto>
+﻿@model List<NetCoreAI.Project02_ApiConsumeUI.Dtos.ResultCustomerDto>
 @{
-    ViewData["Title"] = "CustomerList";
+    // ViewData["Title"] = "CustomerList";
+    Layout = null;
 }
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
 <div class="container">
     <br />
@@ -14,7 +16,7 @@
             <th>Sil</th>
             <th>Güncelle</th>
         </tr>
-        @foreach(var item in Model)
+        @foreach (var item in Model)
         {
             <tr>
                 <td>@item.customerId</td>
@@ -27,6 +29,3 @@
     </table>
     <a href="/Customer/CreateCustomer" class="btn btn-primary">Yeni Müşteri Girişi</a>
 </div>
-
-<h1>CustomerList</h1>
-
