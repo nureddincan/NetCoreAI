@@ -6,15 +6,15 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        var apiKey = "Buraya Key Gelecek";
-        Console.WriteLine("Lütfen sorunuzu yazınız: (örnek: 'Merhaba bugün Sakarya'da hava kaç derece");
+        var apiKey = "Buraya API Keyiniz Gelecek.";
+        Console.WriteLine("Lütfen sorunuzu yazınız: (örnek: 'Merhaba, bugün Sakarya'da hava kaç derece')");
 
         var prompt = Console.ReadLine();
 
         using var httpClient = new HttpClient();
         // Authorization anahtar kelimedir.
         // Bearer .Net projelerinde tokenların işlenmesi esnasında kullanılan anahtar kelimedir.
-        httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer{apiKey}");
+        httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
 
         var requestBody = new
         {
