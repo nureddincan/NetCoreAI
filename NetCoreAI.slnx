@@ -9,4 +9,5 @@
   <Project Path="NetCoreAI.Project08_GoogleCloudVision/NetCoreAI.Project08_GoogleCloudVision.csproj" Id="f2bbf053-1d4c-4131-ab56-c14b286c076a" />
   <Project Path="NetCoreAI.Project09_OpenAITranslate/NetCoreAI.Project09_OpenAITranslate.csproj" Id="8b04b48a-b962-4d71-950c-458314a68c82" />
   <Project Path="NetCoreAI.Project10_TextToSpeech/NetCoreAI.Project10_TextToSpeech.csproj" Id="2b7ede9c-4a1d-4c27-bc6b-6ec079a1a801" />
+  <Project Path="NetCoreAI.Project11_TextToSpeechWithOpenAI/NetCoreAI.Project11_TextToSpeechWithOpenAI.csproj" Id="db661ab8-41fc-4d17-9364-a1738877823b" />
 </Solution>
