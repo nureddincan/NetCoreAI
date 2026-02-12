@@ -1,0 +1,5 @@
+﻿https://github.com/tesseract-ocr/tessdata
+
+Yukarıdaki linkten eng.traineddata dosyasını indirin.
+Bilgisayarınızın C diskinde tessdata adlı klasör oluşturun.
+İndirdiğiniz eng.traineddata dosyasını tessdata klasörünün içine atın.
