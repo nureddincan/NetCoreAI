@@ -1,0 +1,29 @@
+﻿using System.Speech.Synthesis;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
+
+        speechSynthesizer.Volume = 100;
+        // Normal konuşma hızı
+        speechSynthesizer.Rate = 0;
+
+        Console.Write("Metni Girin: ");
+        string input;
+        input = Console.ReadLine();
+
+        if (!string.IsNullOrEmpty(input))
+        {
+            speechSynthesizer.Speak(input);
+        }
+        else
+        {
+            Console.WriteLine("Metin seslendirilemedi!");
+        }
+
+        Console.ReadLine();
+
+    }
+}
