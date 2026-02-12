@@ -19,7 +19,7 @@ class Program
             };
 
             string jsonBody = JsonConvert.SerializeObject(requestBody);
-            var content = new StringContent(jsonBody, Encoding.UTF8, "aplication/json");
+            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = await client.PostAsync("https://api.openai.com/v1/images/generations", content);
             // Oluşturulan resmin linki

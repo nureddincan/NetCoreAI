@@ -8,7 +8,7 @@ class Program
         string imagePath = Console.ReadLine();
         Console.WriteLine();
         // Buranın içine bir json dosyası alınacak. Bu json dosyası Google API üzerinden bizi karşılayacak
-        string credentialPath = "C:\\Users\\NureddinCan\\Downloads\\visionapiservice-0-865cd886393b.json";
+        string credentialPath = "Buraya Servis JSON Dosyası Gelecek.";
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath);
 
         try
