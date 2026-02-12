@@ -4,4 +4,5 @@
   <Project Path="NetCoreAI.Project03_RapidApi/NetCoreAI.Project03_RapidApi.csproj" Id="223b794a-f06b-40d3-95b5-9c80d9bf0aea" />
   <Project Path="NetCoreAI.Project04_OpenAIChat/NetCoreAI.Project04_OpenAIChat.csproj" Id="ceb38adb-af9f-4508-9541-6163a9a4b36b" />
   <Project Path="NetCoreAI.Project05_OpenAIWhisperAudioToText/NetCoreAI.Project05_OpenAIWhisperAudioToText.csproj" Id="3ae07e91-5e89-4bf2-8f43-993b97eaa512" />
+  <Project Path="NetCoreAI.Project06_DallE-ImageGeneration/NetCoreAI.Project06_DallE-ImageGeneration.csproj" Id="de82dabf-50f2-4de5-b878-3208c7378bbb" />
 </Solution>
