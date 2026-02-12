@@ -24,7 +24,7 @@ class Program
                 new {role = "system", content= "You are a helpful assistant."},
                 new {role = "user", content= prompt}
             },
-            max_tokens = 100
+            max_tokens = 500
         };
 
         var json = JsonSerializer.Serialize(requestBody);
