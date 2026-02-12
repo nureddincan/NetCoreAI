@@ -1,1 +1,58 @@
-﻿Console.WriteLine("Hello, World!");
+﻿
+using System.Text;
+using System.Text.Json;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        var apiKey = "Buraya Key Gelecek";
+        Console.WriteLine("Lütfen sorunuzu yazınız: (örnek: 'Merhaba bugün Sakarya'da hava kaç derece");
+
+        var prompt = Console.ReadLine();
+
+        using var httpClient = new HttpClient();
+        // Authorization anahtar kelimedir.
+        // Bearer .Net projelerinde tokenların işlenmesi esnasında kullanılan anahtar kelimedir.
+        httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer{apiKey}");
+
+        var requestBody = new
+        {
+            model = "gpt-5.2",
+            messages = new[]
+            {
+                new {role = "system", content= "You are a helpful assistant."},
+                new {role = "user", content= prompt}
+            },
+            max_tokens = 100
+        };
+
+        var json = JsonSerializer.Serialize(requestBody);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        try
+        {
+            // Neden GetAsync değil biz bir liste dönmeyeceğiz, soru soracağız bunun karşılığında cevap bekliyoruz.
+            var response = await httpClient.PostAsync("https://api.openai.com/v1/chat/completions", content);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                var result = JsonSerializer.Deserialize<JsonElement>(responseString);
+                // Cevaplardan ilkini seç, message isimli property'nin içeriğini ve content'i string olarak getir.
+                var answer = result.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString();
+                Console.WriteLine("Open AI'ın Cevabı: ");
+                Console.WriteLine(answer);
+            }
+            else
+            {
+                Console.WriteLine($"Bir hata oluştu: {response.StatusCode}");
+                Console.WriteLine(responseString);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Bir hata oluştu: {ex.Message}");
+        }
+    }
+}
