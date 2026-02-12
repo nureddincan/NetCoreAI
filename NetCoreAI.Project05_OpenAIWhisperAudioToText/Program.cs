@@ -38,8 +38,6 @@ class Program
                 Console.WriteLine($"Hata: {response.StatusCode}");
                 Console.WriteLine(await response.Content.ReadAsStringAsync());
             }
-
         }
-
     }
 }
